@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { color, fontSize, fontWeight } from '../assets/theme'
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -17,18 +17,21 @@ export function GradientBtn({ children, passedStyle }) {
     )
 }
 
-export function PrimaryBtn ({ children, passedStyle, active }) {
+export function PrimaryBtn ({ children, passedStyle, active, onPress }) {
     return (
-        <View style={[style.button, { backgroundColor: active? color.primary : color['gray-100']}, ...passedStyle]}>
+        <TouchableOpacity 
+        onPress={onPress}
+        style={[style.button, { backgroundColor: active? color.primary : color['light']}, ...passedStyle]}
+        >
             <Text style={{color: active? color.white : color.primary, fontWeight: fontWeight.bold, fontSize: fontSize.h4 }}>{children}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
 export function ShadowBtn ({ children, passedStyle, active }) {
     return (
-        <View style={[style.button, { backgroundColor: active? color['primary'] : color['white-0.5']}, ...passedStyle]}>
-            <Text style={{color: active? color.white : color.primary, fontWeight: fontWeight.bold, fontSize: fontSize.h4 }}>{children}</Text>
+        <View style={[style.button, { backgroundColor: active? color['primary'] : color['white']}, ...passedStyle]}>
+            <Text style={{color: active? color.white : color['primary'], fontWeight: fontWeight.bold, fontSize: fontSize.h4 }}>{children}</Text>
         </View>
     )
 }

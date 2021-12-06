@@ -10,18 +10,11 @@ export default StyleSheet.create({
         backgroundColor: color['primary'],
         height: "100%",
     },
-    overlay: {
-        backgroundColor: color['white-0.2'],
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        position: 'relative',
-    },
     backBtn: {
         width: 40,
         height: 40,
         borderRadius: 30,
-        backgroundColor: color['primary-0.5'],
+        backgroundColor: color['primary-0.2'],
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -29,24 +22,9 @@ export default StyleSheet.create({
         marginTop: 20,
         marginLeft: 20
     },
-    backText: {
-        color: color.white,
-        fontWeight: fontWeight.bold,
-        fontSize: fontSize.h2,
-        fontStyle: 'italic',
-        position: 'absolute',
-        left: '50%',
-        top: 0,
-        width: 320,
-        transform: [{ translateX: -145 }],
-        // backgroundColor: 'blue',
-        textAlign: 'center',
-        height: '100%',
-        textAlignVertical: 'center'
-    },
     name: {
         fontSize: fontSize.h2,
-        color: color['white'],
+        color: color['light'],
         fontWeight: fontWeight.bold,
         flex: 1,
         marginBottom: 5,
@@ -59,36 +37,59 @@ export default StyleSheet.create({
     },
     desc: {
         fontSize: fontSize.h4,
-        color: color['gray-200'],
-        letterSpacing: 1
+        color: color['gray-300'],
+        letterSpacing: 0.5
     },
     image: {
         width: '100%',
+        height: 150,
         resizeMode: 'contain',
+        transform: [{rotate: '-20deg'}],
+        marginBottom: 90
+    },
+    curve: {
+        width: winWidth,
+        backgroundColor: color['primary'],
+        paddingTop: winWidth,
+        borderRadius: 200,
+        transform: [
+            { scaleX: 2 },
+            { translateY: -35 }
+        ],
+        zIndex: 0,
+        position: 'absolute',
+    },
+    circle: {
+        width: winWidth/5,
+        paddingTop: winWidth/5,
+        borderRadius: 100,
+        top: -60,
+        left: '50%',
+        transform: [{translateX: -winWidth/10}],
+        backgroundColor: color["primary"],
     },
     sizes: {
         paddingVertical: 15,
         borderRadius: 10,
-        borderBottomLeftRadius: 10,
-        backgroundColor: color['white-0.5'],
-        borderColor: color.white,
-        borderWidth: 1,
+        backgroundColor: color['blue-400'],
         display: 'flex',
         flexDirection: 'row',
         marginRight: 20,
-        width: '100%'
+        width: winWidth,
+        position: 'absolute',
+        top: -20
     },
     subtitle: {
         fontWeight: fontWeight.bold,
         fontSize: fontSize.h3,
-        color: color['gray-100'],
+        color: color['blue-900'],
         marginTop: 20,
         marginBottom: 10
     },
     footer: {
         position: 'absolute',
         width: '100%',
-        backgroundColor: color['white'], 
+        backgroundColor: color['white'],
         bottom: 0,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
@@ -104,12 +105,19 @@ export default StyleSheet.create({
         },
         shadowOpacity: 0.5,
         shadowRadius: 10,
-        elevation: 50,
+        elevation: 20,
     },
     detail: {
-        color: color['white'],
-        lineHeight: 20,
-        letterSpacing: 1,
-        marginTop: 20
+        color: color['blue-900'],
+        lineHeight: 25,
+        letterSpacing: 0,
+        marginTop: 20,
+    },
+    sideNavigator: {
+        borderColor: color['blue-900'],
+        borderWidth: 0.5,
+        width: 30, height: 30,
+        borderRadius: 15,
+        transform: [{ scaleX: 9 }], marginBottom: 50,
     }
 })

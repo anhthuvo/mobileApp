@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Shoes App",
+    "githubUrl": "https://github.com/anhthuvo/mobileApp"
   }
 }

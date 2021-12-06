@@ -40,22 +40,17 @@ export default StyleSheet.create({
         flex: 1
     },
     searchIcon: {
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
         resizeMode: 'contain',
         position: 'absolute',
-        top: 0,
-        right: 0,
-        backgroundColor: color.primary,
-        borderRadius: 10,
-        // backgroundColor: 'red',
-        alignItems: "center",
-        justifyContent: 'center'
+        right: 10,
+        top: 5
     },
     banner :{
+        backgroundColor: color.white,
         borderRadius: 10,
         marginTop: 20,
-        marginBottom: 20,
         position: 'relative',
         display: 'flex',
         justifyContent: 'center',
@@ -88,23 +83,24 @@ export default StyleSheet.create({
     },
     productList: {
         paddingVertical: 20,
-        // paddingHorizontal: 10,
+        paddingHorizontal: 10,
         display: 'flex',
         flexDirection: 'row',
         flexWrap: "wrap",
-        // backgroundColor: 'red'
     },
     itemBounder: {
         width: isMobile? '50%' : '33.33%',
+        // backgroundColor: 'red',
         marginTop: 20,
         paddingHorizontal: isMobile? 10 : isTablet? 20 : 40
     },
     productWrapper: {
         width: '100%',
-        paddingTop: '130%',
-        borderRadius: 10,
+        paddingTop: '100%',
+        borderRadius: 5,
+        borderColor: color['blue-400'],
+        borderWidth: 1,
         position: 'relative',
-        backgroundColor: color['secondary'],
     },
     productImage: {
         width: '100%',
@@ -117,25 +113,22 @@ export default StyleSheet.create({
     },
     productContent: {
         position: 'absolute',
-        bottom: 0,
+        bottom: 15,
         width: '100%',
-        paddingBottom: 20,
-        paddingTop: 20,
-        backgroundColor: color.light,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
+        height: 50,
+        paddingHorizontal: 5,
+        // backgroundColor: 'red'
     },
     productName: {
         color: color['blue-900'],
         fontSize: fontSize.h4,
-        textAlign: 'center',
+        textAlign: 'right',
         fontWeight: fontWeight.bold,
         textTransform: 'uppercase'
     },
     productPrice: {
-        color: color['gray-300'],
-        textAlign: 'center',
-        fontSize: fontSize.h4,
-        marginTop: 10
+        color: color['blue-300'],
+        textAlign: 'right',
+        fontSize: fontSize.p,
     }
 })

@@ -61,34 +61,32 @@ export default function Home({ navigation }) {
 
     useEffect(() => {
         shopApi.get(`/products?page=${1}&limit=0`)
-            .then(res => {
-                const _ProductList = [...ProductList, ...res.data.products];
-                setProductList(_ProductList)
-            })
-            .catch(err => console.log('err', err))
+        .then(res => {
+            const _ProductList = [...ProductList, ...res.data.products];
+            setProductList(_ProductList)
+        })
+        .catch(err => console.log('err', err))
     }, [])
 
     return (
         <ScrollView style={[style.background, commonStyle.container]} showsVerticalScrollIndicator={false}>
             <View style={[style.searchWrapper]}>
-                <TextInput style={[style.search]} placeholder={"Searching"} />
-                <View style={[style.searchIcon]}>
-                    <Image
-                    style={[{width: '50%', height: '50%'}]}
-                        source={require('../../assets/icons/gray-search.png')}
-                    />
-                </View>
+                <TextInput style={[style.search]} placeholder={"Find something ??"} />
+                <Image
+                    style={[style.searchIcon]}
+                    source={require('../../assets/icons/gray-search.png')}
+                />
             </View>
 
             <LinearGradient
                 locations={[0, 1]}
-                colors={['transparent', color['secondary']]}
+                colors={[color.white, color['gray-200']]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={[style.banner, { height: winWidth / 2 }]}
             >
                 <Text style={[style.bannerContent]}>Nike Sb Zoom Dunk</Text>
-                <PrimaryBtn passedStyle={[isMobile && styleBtn.sm, { marginTop: 10 }]} active={true}>Explore</PrimaryBtn>
+                <GradientBtn passedStyle={[isMobile && styleBtn.sm, { marginTop: 10 }]}>Explore</GradientBtn>
 
                 <Image
                     style={[style.bannerImg]}
@@ -96,7 +94,7 @@ export default function Home({ navigation }) {
                 />
             </LinearGradient>
 
-            {/* <Text style={style.title}>Category</Text>
+            <Text style={style.title}>Category</Text>
             <View style={[{ height: 70, position: 'relative' }]}>
                 <Image
                     style={[style.categoryArrow]}
@@ -109,9 +107,9 @@ export default function Home({ navigation }) {
                         </PrimaryBtn>
                     ))}
                 </ScrollView>
-            </View> */}
+            </View>
 
-            {/* <View style={[{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }]}>
+            <View style={[{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }]}>
                 <Text style={style.title}>Price</Text>
                 <Text style={{ color: color['blue-600'] }}>Up to ${price}</Text>
             </View>
@@ -124,30 +122,45 @@ export default function Home({ navigation }) {
                 thumbImage={require('../../assets/icons/pink-circle.png')}
                 onValueChange={(value) => setprice(value)}
                 step={10}
-            /> */}
+            />
 
+            <LinearGradient
+                locations={[0, 0.2, 0.7, 0.8, 1]}
+                colors={color.gradient}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0.7 }}
+                style={[{ marginVertical: 20, borderRadius: 10 }]}
+            >
                 <View style={[style.productList]}>
                     {ProductList.map((p, i) => {
+                        let isSolid = (i % 4 === 3 || i % 4 === 0) && isMobile;
                         return (
                             <TouchableOpacity
                                 title="Back to product list"
                                 onPress={() => navigation.push('ProductDetail', { detail: p })}
                                 style={[style.itemBounder, { marginTop: (i % 2) || !isMobile ? 70 : 30 }]} key={i}
                             >
-                                <View style={[style.productWrapper]}>
+                                <LinearGradient
+                                    locations={[0.4, 1]}
+                                    colors={isSolid ? [color.white, color['gray-200']] : ['transparent', 'transparent']}
+                                    start={{ x: -0.5, y: 0 }}
+                                    end={{ x: 1, y: 0.5 }}
+                                    style={[style.productWrapper]}
+                                >
                                     <Image
                                         style={[style.productImage]}
                                         source={{ uri: `${API_URL}/images/${p.image[0]}` }}
                                     />
                                     <View style={[style.productContent]}>
-                                        <Text style={[style.productName, { color: color['primary'] }]}>{p.name}</Text>
+                                        <Text style={[style.productName, { color: isSolid ? color['blue-900'] : color.white }]}>{p.name}</Text>
                                         <Text style={[style.productPrice]}>${p.price}</Text>
                                     </View>
-                                </View>
+                                </LinearGradient>
                             </TouchableOpacity>
                         )
                     })}
                 </View>
+            </LinearGradient>
         </ScrollView>
     )
 }
